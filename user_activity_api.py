@@ -1,4 +1,5 @@
 import json
+import sys
 import urllib.request
 
 
@@ -42,15 +43,14 @@ def processing_event(event: str) -> None:
 
 
 if __name__ == "__main__":
-    user2 = "kamranahmedse"
-    user3 = "XYZ-qiyh"
-    user = "MarkLLLuo"
+    user = sys.argv[1]
+    if not len(sys.argv) == 2:
+        user = input("Invalid username, please try again:")
     try:
         with urllib.request.urlopen(f"https://api.github.com/users/{user}/events") as f:
             content = f.read()
             events = json.loads(content.decode("utf-8"))
             num = len(events)
-            print(f"{num}")
             if num > 0:
                 print(f"{num} OUTPUT found for user: {events[0]['actor']['login']}:")
                 for event in events:
