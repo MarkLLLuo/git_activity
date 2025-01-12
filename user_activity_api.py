@@ -43,7 +43,8 @@ def processing_event(event: str) -> None:
 
 if __name__ == "__main__":
     user2 = "kamranahmedse"
-    user = "XYZ-qiyh"
+    user3 = "XYZ-qiyh"
+    user = "MarkLLLuo"
     try:
         with urllib.request.urlopen(f"https://api.github.com/users/{user}/events") as f:
             content = f.read()
@@ -55,6 +56,6 @@ if __name__ == "__main__":
                 for event in events:
                     processing_event(event)
             else:
-                print("NO RESULT FOUND FOR {user}")
+                print(f"NO RESULT FOUND FOR {user}")
     except urllib.error.HTTPError as e:
         print(f"Invalid request, error code: {e.code}")
