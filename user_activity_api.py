@@ -4,40 +4,37 @@ import urllib.request
 
 
 def processing_event(event: str) -> None:
+    repo_name = event["repo"]["name"]
     if event["type"] == "PushEvent":
-        print(f"- pushed {event['payload']['size']} commits to {event['repo']['name']}")
+        print(f"- pushed {event['payload']['size']} commits to {repo_name}")
     elif event["type"] == "IssuesEvent":
-        print(f"- {event['payload']['action']} a issue in {event['repo']['name']}")
+        print(f"- {event['payload']['action']} a issue in {repo_name}")
     elif event["type"] == "WatchEvent":
-        print(f"- starred {event['repo']['name']}")
+        print(f"- starred {repo_name}")
     elif event["type"] == "CreateEvent":
-        print(
-            f"- created a new {event['payload']['ref_type']} in {event['repo']['name']}"
-        )
+        print(f"- created a new {event['payload']['ref_type']} in {repo_name}")
     elif event["type"] == "PullRequestEvent":
-        print(
-            f"- {event['payload']['action']} a pullrequest in {event['repo']['name']}"
-        )
+        print(f"- {event['payload']['action']} a pullrequest in {repo_name}")
     elif event["type"] == "DeleteEvent":
-        print(f"- delete a {event['payload']['ref_type']} in {event['repo']['name']}")
+        print(f"- delete a {event['payload']['ref_type']} in {repo_name}")
     elif event["type"] == "ForkEvent":
-        print(f"- fork a {event['payload']['ref_type']} in {event['repo']['name']}")
+        print(f"- fork a {event['payload']['ref_type']} in {repo_name}")
     elif event["type"] == "CommitCommentEvent":
-        print(f"- Created a comment on {event['repo']['name']}")
+        print(f"- Created a comment on {repo_name}")
     elif event["type"] == "IssueCommentEvent":
-        print(f"- {event['payload']['action']} a issue in {event['repo']['name']}")
+        print(f"- {event['payload']['action']} a issue in {repo_name}")
     elif event["type"] == "PullRequestReviewEvent":
-        print(f"- created a pullrequest review in {event['repo']['name']}")
+        print(f"- created a pullrequest review in {repo_name}")
     elif event["type"] == "PullRequestReviewCommentEvent":
-        print(f"- commented on a pullrequst review in {event['repo']['name']}")
+        print(f"- commented on a pullrequst review in {repo_name}")
     elif event["type"] == "PullRequestReviewThreadEvent":
         print(
-            f"- marked {event['payload']['action']} for a pull request comment in {event['repo']['name']}"
+            f"- marked {event['payload']['action']} for a pull request comment in {repo_name}"
         )
     elif event["type"] == "MemberEvent":
-        print(f"- added {event['payload']['member']} to {event['repo']['name']}")
+        print(f"- added {event['payload']['member']} to {repo_name}")
     elif event["type"] == "MemberEvent":
-        print(f"- made {event['repo']['name']} public")
+        print(f"- made {repo_name} public")
     else:
         print(event)
 
